@@ -10,22 +10,59 @@ Input:
 Output:
 - y_pred: the predicted labels for the testing data.
 
-1. Create a BayesClassifier class with the following methods:
+### 1. Create a BayesClassifier class with the following methods:
    a. __init__ method to initialize the Gaussian Naive Bayes classifier from scikit-learn.
    b. fit method to fit the classifier to the training data using the Gaussian Naive Bayes algorithm from scikit-learn.
    c. predict method to make predictions on the testing data using the fitted classifier from scikit-learn.
-2. Load the Iris dataset using the load_iris function from scikit-learn.
-3. Split the data into training and testing sets using the train_test_split function from scikit-learn.
-4. Create a BayesClassifier instance.
-5. Train the classifier on the training data using the fit method.
-6. Make predictions on the testing data using the predict method.
-7. Evaluate the classifier's accuracy using the accuracy_score function from scikit-learn.
+### 2. Load the Iris dataset using the load_iris function from scikit-learn.
+### 3. Split the data into training and testing sets using the train_test_split function from scikit-learn.
+### 4. Create a BayesClassifier instance.
+### 5. Train the classifier on the training data using the fit method.
+### 6. Make predictions on the testing data using the predict method.
+### 7. Evaluate the classifier's accuracy using the accuracy_score function from scikit-learn.
+
 
 ## Program:
-''' Type your code here'''
+```
+Developed by: Jeeva Abishake A
+Register Number: 212221240018
+```
+```python
+import numpy as np
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
+
+
+class BayesClassifier:
+  def __init__(self):
+    self.clf = GaussianNB()
+  def fit(self, X, y):
+    self.clf.fit(X, y)
+   
+  def predict(self, X):
+    return self.clf.predict(X)
+
+ir = load_iris()
+
+X_train, X_test, y_train, y_test = train_test_split(ir.data, ir.target,test_size=0.3, random_state = 42)
+
+clf = BayesClassifier()
+
+clf.fit(X_train, y_train)
+
+y_pred = clf.predict(X_test)
+
+accu = accuracy_score(y_test, y_pred)
+print("Accuracy:",accu*100)
+
+
+```
 
 ## Output:
-''' Output screen shots here
+![output](out.png)
+
 ## Result:
 Hence, Bayes classifier for iris dataset is implemented successfully
 
